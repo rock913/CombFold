@@ -111,12 +111,13 @@ def score_transformation(pdb_path1: str, pdb_path2: str) -> Optional[float]:
     chain1_ca = np.array([res["CA"].get_coord() for res in chain1_res])
     chain2_ca = np.array([res["CA"].get_coord() for res in chain2_res])
 
-    INTERFACE_MIN_ATOM_DIST = 20
-    print("increase INTERFACE_MIN_ATOM_DIST from 8 t0 20")
+    INTERFACE_MIN_ATOM_DIST = 30
+    print("increase INTERFACE_MIN_ATOM_DIST from 8 t0 30")
     close_residues = np.argwhere(scipy.spatial.distance.cdist(chain1_ca, chain2_ca) < INTERFACE_MIN_ATOM_DIST)
     if len(close_residues) == 0:
         print("Skipping transformation, missing interface between",
               os.path.basename(pdb_path1)[8:-4], os.path.basename(pdb_path2)[8:-4])
+        print(distance:scipy.spatial.distance.cdist(chain1_ca, chain2_ca))
         return None
 
     chain1_interface, chain2_interface = set(), set()
