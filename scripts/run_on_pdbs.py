@@ -117,7 +117,7 @@ def score_transformation(pdb_path1: str, pdb_path2: str) -> Optional[float]:
     if len(close_residues) == 0:
         print("Skipping transformation, missing interface between",
               os.path.basename(pdb_path1)[8:-4], os.path.basename(pdb_path2)[8:-4])
-        print(distance:scipy.spatial.distance.cdist(chain1_ca, chain2_ca))
+        print("distance:",scipy.spatial.distance.cdist(chain1_ca, chain2_ca))
         return None
 
     chain1_interface, chain2_interface = set(), set()
